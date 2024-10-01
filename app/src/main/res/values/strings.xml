@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Luma Shop</string>
+    <string name="left_texture">Left Texture</string>
+    <string name="rightAddress">The Right Address\nFor Shopping\nAnyday</string>
+    <string name="quality">It is now very easy to reach\nthe base quality among\nProducts in the internet</string>
+    <string name="hello_blank_fragment">hello</string>
+</resources>
