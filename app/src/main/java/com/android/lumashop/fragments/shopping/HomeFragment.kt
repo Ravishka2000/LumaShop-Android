@@ -26,8 +26,10 @@ class HomeFragment : Fragment() {
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = "Main Category"
-                1 -> tab.text = "Another Tab"
+                0 -> tab.text = "Home"
+                1 -> tab.text = "Tables"
+                2 -> tab.text = "Chairs"
+                3 -> tab.text = "Cupboards"
             }
         }.attach()
 
