@@ -1,4 +1,4 @@
-package com.android.lumashop.fragments
+package com.android.lumashop.fragments.shopping
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.android.lumashop.R
-import com.android.lumashop.fragments.HomeFragment
+import com.android.lumashop.fragments.shopping.HomeFragment
 import com.android.lumashop.fragments.shopping.SearchFragment
 import com.android.lumashop.fragments.shopping.CartFragment
 import com.android.lumashop.fragments.shopping.ProfileFragment
@@ -18,7 +18,6 @@ class ShoppingActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
 
-        // Set initial fragment (HomeFragment)
         if (savedInstanceState == null) {
             loadFragment(HomeFragment())
         }
@@ -34,7 +33,6 @@ class ShoppingActivity : AppCompatActivity() {
         }
     }
 
-    // Helper function to load a fragment into the container
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
