@@ -1,15 +1,13 @@
 package com.android.lumashop.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.lumashop.R
 import com.android.lumashop.models.Product
 import com.android.lumashop.databinding.ItemProductBinding
 import com.bumptech.glide.Glide
 
-class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val products: List<Product>, private val onProductClick: (Product) -> Unit) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
@@ -18,10 +16,13 @@ class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter
                 productPrice.text = "$${product.price}"
                 productDescription.text = product.description
 
-                // Load product image with Glide
                 Glide.with(itemView.context)
                     .load(product.productImages?.firstOrNull())
                     .into(productImage)
+
+                itemView.setOnClickListener {
+                    onProductClick(product)
+                }
             }
         }
     }
@@ -37,3 +38,4 @@ class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter
 
     override fun getItemCount(): Int = products.size
 }
+

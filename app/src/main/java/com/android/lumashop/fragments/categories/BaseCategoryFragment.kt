@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.lumashop.R
 import com.android.lumashop.adapters.ProductAdapter
 import com.android.lumashop.databinding.FragmentBaseCategoryBinding
+import com.android.lumashop.fragments.shopping.ProductDetailsFragment
 import com.android.lumashop.models.Product
 
 abstract class BaseCategoryFragment : Fragment() {
@@ -15,7 +17,7 @@ abstract class BaseCategoryFragment : Fragment() {
     private var _binding: FragmentBaseCategoryBinding? = null
     private val binding get() = _binding!!
 
-    abstract fun getCategoryProducts(): List<Product> // Abstract method to be implemented by subclasses
+    abstract fun getCategoryProducts(): List<Product>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,10 +30,19 @@ abstract class BaseCategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Get filtered products for the category
-        val productAdapter = ProductAdapter(getCategoryProducts())
+        val productAdapter = ProductAdapter(getCategoryProducts()) { product ->
+            val productDetailsFragment = ProductDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putString("productId", product.id)
+                }
+            }
 
-        // Setup RecyclerView
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, productDetailsFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
         binding.recyclerViewCategory.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = productAdapter
