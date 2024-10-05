@@ -277,7 +277,7 @@ object SampleData {
         )
     )
 
-    val vendorRatingsList = listOf(
+    val vendorRatingsList = mutableListOf(
         // Rating 1: John Doe rates Jane Smith
         VendorRatings(
             id = "rating_1",
