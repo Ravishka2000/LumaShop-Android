@@ -15,7 +15,7 @@ class CartFragment : Fragment() {
     private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var cartAdapter: CartAdapter // Declare the adapter
+    private lateinit var cartAdapter: CartAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,6 @@ class CartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize the adapter with a mutable list of cart items
         cartAdapter = CartAdapter(CartManager.getCartItems().toMutableList())
 
         binding.rvCart.apply {
