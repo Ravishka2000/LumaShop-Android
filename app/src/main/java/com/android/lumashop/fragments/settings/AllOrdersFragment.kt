@@ -1,60 +1,80 @@
 package com.android.lumashop.fragments.settings
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.lumashop.R
+import com.android.lumashop.adapters.AllOrdersAdapter
+import com.android.lumashop.databinding.FragmentAllOrdersBinding
+import com.android.lumashop.models.Order
+import com.android.lumashop.utils.OrderManager
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AllOrdersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AllOrdersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentAllOrdersBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var allOrdersAdapter: AllOrdersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_orders, container, false)
+    ): View {
+        _binding = FragmentAllOrdersBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AllOrdersFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AllOrdersFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupRecyclerView()
+        displayOrders()
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvAllOrders.layoutManager = LinearLayoutManager(requireContext())
+        allOrdersAdapter = AllOrdersAdapter(emptyList()) { order ->
+            navigateToTrackOrdersFragment(order) // Handle item click
+        }
+        binding.rvAllOrders.adapter = allOrdersAdapter
+    }
+
+    private fun displayOrders() {
+        val orders = OrderManager.getAllOrders()
+        allOrdersAdapter = AllOrdersAdapter(orders) { order ->
+            navigateToTrackOrdersFragment(order)
+        }
+        binding.rvAllOrders.adapter = allOrdersAdapter
+
+        // Show or hide empty orders view based on order count
+        if (orders.isEmpty()) {
+            binding.tvEmptyOrders.visibility = View.VISIBLE
+            binding.rvAllOrders.visibility = View.GONE
+        } else {
+            binding.tvEmptyOrders.visibility = View.GONE
+            binding.rvAllOrders.visibility = View.VISIBLE
+        }
+    }
+
+    private fun navigateToTrackOrdersFragment(order: Order) {
+        val fragment = TrackOrdersFragment()
+        val bundle = Bundle().apply {
+            putString("orderId", order.id) // Pass the order ID or other relevant data
+        }
+        fragment.arguments = bundle
+
+        // Navigate to TrackOrdersFragment
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment) // Update with your container ID
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

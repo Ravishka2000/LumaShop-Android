@@ -32,10 +32,6 @@ class ProfileFragment : Fragment() {
             loadSubFragment(AllOrdersFragment())
         }
 
-        binding.linearTrackOrder.setOnClickListener {
-            loadSubFragment(TrackOrdersFragment())
-        }
-
         binding.constraintProfile.setOnClickListener {
             loadSubFragment(EditProfileFragment())
         }

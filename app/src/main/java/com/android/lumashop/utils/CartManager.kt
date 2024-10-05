@@ -51,4 +51,9 @@ object CartManager {
     fun notifyCartUpdated() {
         listener?.onCartUpdated()
     }
+
+    fun clearCart() {
+        cartItems.clear()
+    }
+
 }

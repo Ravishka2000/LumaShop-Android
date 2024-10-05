@@ -30,7 +30,6 @@ class CartAdapter(private var cartItems: MutableList<CartItem>) : RecyclerView.A
                 }
             }
 
-            // Set color filter
             try {
                 val color = Color.parseColor(cartItem.color)
                 binding.imageCartProductColor.setColorFilter(color)
@@ -38,12 +37,10 @@ class CartAdapter(private var cartItems: MutableList<CartItem>) : RecyclerView.A
                 binding.imageCartProductColor.setColorFilter(Color.parseColor("#0000fe")) // Default color
             }
 
-            // Handle minus button click
             binding.imageMinus.setOnClickListener {
                 CartManager.removeFromCart(cartItem.product)
             }
 
-            // Handle plus button click
             binding.imagePlus.setOnClickListener {
                 CartManager.addToCart(cartItem) // Use the add method to handle quantity updates
             }
@@ -63,7 +60,12 @@ class CartAdapter(private var cartItems: MutableList<CartItem>) : RecyclerView.A
         return cartItems.size
     }
 
-    // Implement the interface method to update the cart items
+    fun updateCartItems(newCartItems: List<CartItem>) {
+        cartItems.clear()
+        cartItems.addAll(newCartItems)
+        notifyDataSetChanged()
+    }
+
     override fun onCartUpdated() {
         cartItems.clear() // Clear the current list
         cartItems.addAll(CartManager.getCartItems()) // Add updated cart items
