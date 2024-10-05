@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.lumashop.R
 import com.android.lumashop.adapters.ProductColorsAdapter
 import com.android.lumashop.adapters.ProductImagesAdapter
 import com.android.lumashop.data.SampleData
@@ -95,9 +96,17 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun navigateToVendorDetails(vendorId: String) {
+        val vendorDetailsFragment = VendorDetailsFragment()
         val bundle = Bundle().apply {
             putString("vendorId", vendorId)
         }
+        vendorDetailsFragment.arguments = bundle
+
+        // Perform Fragment Transaction
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, vendorDetailsFragment) // Ensure 'fragment_container' is your container ID in the Activity layout
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroyView() {
