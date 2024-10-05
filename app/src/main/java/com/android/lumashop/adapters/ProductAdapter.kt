@@ -7,13 +7,16 @@ import com.android.lumashop.models.Product
 import com.android.lumashop.databinding.ItemProductBinding
 import com.bumptech.glide.Glide
 
-class ProductAdapter(private val products: List<Product>, private val onProductClick: (Product) -> Unit) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(
+    private var products: List<Product>,
+    private val onProductClick: (Product) -> Unit
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
                 productName.text = product.name
-                productPrice.text = "$${product.price}"
+                "$${product.price}".also { productPrice.text = it }
                 productDescription.text = product.description
 
                 Glide.with(itemView.context)
@@ -37,5 +40,9 @@ class ProductAdapter(private val products: List<Product>, private val onProductC
     }
 
     override fun getItemCount(): Int = products.size
-}
 
+    fun updateProducts(newProducts: List<Product>) {
+        products = newProducts
+        notifyDataSetChanged()
+    }
+}

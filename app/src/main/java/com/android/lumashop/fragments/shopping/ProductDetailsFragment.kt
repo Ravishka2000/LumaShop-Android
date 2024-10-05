@@ -19,7 +19,7 @@ class ProductDetailsFragment : Fragment() {
     private var _binding: FragmentProductDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private var selectedColor: String = "#0000FF"  // Default color
+    private var selectedColor: String = "#0000FF"
     private var quantity: Int = 1
 
     override fun onCreateView(
@@ -40,11 +40,10 @@ class ProductDetailsFragment : Fragment() {
 
             binding.productName.text = prod.name
             binding.productDescription.text = prod.description
-            binding.productPrice.text = "$${prod.price}"
-            binding.vendorID.text = "Vendor ID: ${prod.vendorId}"
-            binding.tvAvailableQuantity.text = prod.stockQuantity.toString()
+            "$${prod.price}".also { binding.productPrice.text = it }
+            "Vendor ID: ${prod.vendorId}".also { binding.vendorID.text = it }
+            prod.stockQuantity.toString().also { binding.tvAvailableQuantity.text = it }
 
-            // Display product dimensions if available
             binding.tvDimensionsValues.text = if (prod.dimensions != null) {
                 "Width: ${prod.dimensions.width ?: "-"}cm, " +
                         "Height: ${prod.dimensions.height ?: "-"}cm, " +
@@ -53,18 +52,15 @@ class ProductDetailsFragment : Fragment() {
                 "Dimensions not available"
             }
 
-            // Set up the product images adapter
             val productImagesAdapter = ProductImagesAdapter(prod.productImages ?: emptyList())
             binding.viewPagerProductImages.adapter = productImagesAdapter
 
-            // Set up the product colors adapter
             val productColorsAdapter = ProductColorsAdapter(prod.colorOptions ?: emptyList()) { color ->
-                selectedColor = color  // Store selected color
+                selectedColor = color
             }
             binding.recyclerViewColors.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             binding.recyclerViewColors.adapter = productColorsAdapter
 
-            // Handle quantity increment and decrement
             binding.tvQuantity.text = quantity.toString()
 
             binding.btnIncreaseQuantity.setOnClickListener {
@@ -83,30 +79,25 @@ class ProductDetailsFragment : Fragment() {
                 }
             }
 
-            // Handle Add to Cart button click
             binding.btnAddToCart.setOnClickListener {
                 CartManager.addToCart(CartItem(prod, quantity, selectedColor))
                 Snackbar.make(view, "${prod.name} added to cart", Snackbar.LENGTH_SHORT).show()
             }
 
-            // Handle Purchase button click (for demonstration purposes)
             binding.btnPurchase.setOnClickListener {
                 Snackbar.make(view, "Purchased ${prod.name}", Snackbar.LENGTH_SHORT).show()
             }
 
-            // Handle vendor ID click to navigate to vendor details (to be implemented)
             binding.vendorID.setOnClickListener {
                 navigateToVendorDetails(prod.vendorId)
             }
         }
     }
 
-    // Navigate to vendor details fragment (implementation pending)
     private fun navigateToVendorDetails(vendorId: String) {
         val bundle = Bundle().apply {
             putString("vendorId", vendorId)
         }
-        // Add navigation code here
     }
 
     override fun onDestroyView() {
