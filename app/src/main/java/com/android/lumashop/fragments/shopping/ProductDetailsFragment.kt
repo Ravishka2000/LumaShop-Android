@@ -85,10 +85,6 @@ class ProductDetailsFragment : Fragment() {
                 Snackbar.make(view, "${prod.name} added to cart", Snackbar.LENGTH_SHORT).show()
             }
 
-            binding.btnPurchase.setOnClickListener {
-                Snackbar.make(view, "Purchased ${prod.name}", Snackbar.LENGTH_SHORT).show()
-            }
-
             binding.vendorID.setOnClickListener {
                 navigateToVendorDetails(prod.vendorId)
             }

@@ -24,5 +24,9 @@
     <color name="g_orange_yellow">#F8BA00</color>
     <color name="g_green">#11FF00</color>
 
+    <color name="m_green500">#576F72</color>
+    <color name="m_green100">#7D9D9C</color>
+    <color name="m_beige400">#E4DCCF</color>
+    <color name="m_beige100">#F0EBE3</color>
 
 </resources>

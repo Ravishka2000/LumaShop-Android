@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.LumaShop" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.LumaShop" parent="Theme.Material3.DynamicColors.Light.NoActionBar">
+        <item name="colorPrimary">@color/m_green500</item>
+        <item name="colorPrimaryDark">@color/m_green100</item>
+        <item name="colorAccent">@color/m_beige400</item>
     </style>
 
     <style name="Theme.LumaShop" parent="Base.Theme.LumaShop" />
+
+    <style name="Theme.LumaShop.Splash" parent="Theme.SplashScreen">
+        <item name="android:windowSplashScreenBackground">@color/m_beige400</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_app_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.LumaShop</item>
+    </style>
 </resources>

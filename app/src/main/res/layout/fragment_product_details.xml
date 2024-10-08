@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Product Images Card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardProductImages"
             android:layout_width="0dp"
@@ -27,7 +26,6 @@
                 android:layout_height="match_parent"/>
         </androidx.cardview.widget.CardView>
 
-        <!-- Product Title and Price -->
         <LinearLayout
             android:id="@+id/linearTitlePrice"
             android:layout_width="0dp"
@@ -58,7 +56,6 @@
                 android:text="$6000"/>
         </LinearLayout>
 
-        <!-- Product Description -->
         <TextView
             android:id="@+id/productDescription"
             android:layout_width="0dp"
@@ -70,7 +67,6 @@
             android:textSize="14sp"
             android:text="High-quality leather shoes for formal wear."/>
 
-        <!-- Vendor ID -->
         <TextView
             android:id="@+id/vendorID"
             android:layout_width="wrap_content"
@@ -84,7 +80,6 @@
             android:paddingTop="5dp"
             android:onClick="navigateToVendorDetails"/>
 
-        <!-- Divider Line -->
         <View
             android:id="@+id/topLine"
             android:layout_width="0dp"
@@ -97,7 +92,6 @@
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"/>
 
-        <!-- Quantity Section -->
         <LinearLayout
             android:id="@+id/linearQuantity"
             android:layout_width="0dp"
@@ -160,7 +154,6 @@
                 android:padding="10dp"/>
         </LinearLayout>
 
-        <!-- Color and Dimensions Section -->
         <LinearLayout
             android:id="@+id/linearProductPref"
             android:layout_width="0dp"
@@ -171,14 +164,13 @@
             app:layout_constraintTop_toBottomOf="@id/linearQuantity"
             android:layout_marginTop="30dp">
 
-            <!-- Color Selection -->
             <TextView
                 android:id="@+id/tvProductColors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/h3"
                 android:textColor="@color/black"
-                android:text="Color" />
+                android:text="@string/color" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewColors"
@@ -186,15 +178,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"/>
 
-
-            <!-- Dimensions Section -->
             <TextView
                 android:id="@+id/tvProductDimensions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/h3"
                 android:textColor="@color/black"
-                android:text="Dimensions" />
+                android:text="@string/dimensions" />
 
             <TextView
                 android:id="@+id/tvDimensionsValues"
@@ -205,7 +195,6 @@
                 android:textColor="@color/g_gray700"/>
         </LinearLayout>
 
-        <!-- Purchase and Add to Cart Buttons -->
         <LinearLayout
             android:id="@+id/linearButtons"
             android:layout_width="0dp"
@@ -218,26 +207,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp">
 
-            <!-- Add to Cart Button -->
             <Button
                 android:id="@+id/btnAddToCart"
+                style="@style/GreenButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/g_gray700"
-                android:text="Add to Cart"
+                android:text="@string/add_to_cart"
                 android:textColor="@color/white"/>
 
-            <!-- Purchase Button -->
-            <Button
-                android:id="@+id/btnPurchase"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/g_blue100"
-                android:text="Purchase"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

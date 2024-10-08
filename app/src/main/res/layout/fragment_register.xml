@@ -7,6 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/blurybg"
         android:src="@drawable/blury_background"
         android:scaleType="centerCrop"/>
 
@@ -20,14 +21,13 @@
             android:layout_height="wrap_content"
             style="@style/h3"
             android:layout_marginTop="50dp"
-            android:drawableStart="@drawable/ic_kleine_shape"
             android:drawablePadding="6dp"
             android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_kleine_shape"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Kleine."/>
-
+            android:text="@string/luma"/>
 
         <TextView
             android:id="@+id/tvLetsRegister"
@@ -38,7 +38,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvAppName"
             app:layout_constraintStart_toStartOf="@id/tvAppName"
             app:layout_constraintEnd_toEndOf="@id/tvAppName"
-            android:text="Let's Register"
+            android:text="@string/let_s_register"
             android:textAlignment="center"
             android:gravity="center"
             android:textSize="35sp"
@@ -54,40 +54,45 @@
             app:layout_constraintEnd_toEndOf="@id/tvLetsRegister"
             android:textAlignment="center"
             android:gravity="center"
-            android:text="Do you have an account? log in"
+            android:text="@string/do_you_have_an_account_log_in"
             />
 
         <EditText
             android:id="@+id/edFirstNameRegister"
             android:layout_width="0dp"
             android:layout_height="@dimen/edittextHeight"
+            android:autofillHints="First Name"
+            android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
             app:layout_constraintTop_toBottomOf="@id/tvDoYouHaveAccount"
             style="@style/editText"
-            android:hint="First Name"
+            android:hint="@string/first_name"
             android:layout_marginTop="50dp"/>
 
         <EditText
             android:id="@+id/edLastNameRegister"
             android:layout_width="0dp"
             android:layout_height="@dimen/edittextHeight"
+            android:autofillHints="Last Name"
+            android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
             app:layout_constraintTop_toBottomOf="@id/edFirstNameRegister"
             style="@style/editText"
-            android:hint="Last name"
+            android:hint="@string/last_name"
             android:layout_marginTop="10dp"/>
 
         <EditText
             android:id="@+id/edEmailRegister"
             android:layout_width="0dp"
             android:layout_height="@dimen/edittextHeight"
+            android:autofillHints="Email"
             app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
             app:layout_constraintTop_toBottomOf="@id/edLastNameRegister"
             style="@style/editText"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:layout_marginTop="10dp"/>
 
@@ -95,20 +100,21 @@
             android:id="@+id/edPasswordRegister"
             android:layout_width="0dp"
             android:layout_height="@dimen/edittextHeight"
+            android:autofillHints="Password"
             app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
             app:layout_constraintTop_toBottomOf="@id/edEmailRegister"
             style="@style/editText"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:layout_marginTop="10dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegisterRegister"
-            style="@style/blueButtonStyle"
+            style="@style/GreenButtonStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/mediumButtonHeight"
-            android:text="Register"
+            android:text="@string/register"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
             app:layout_constraintHorizontal_bias="1.0"
@@ -119,6 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
+            android:contentDescription="@string/facebook"
             app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
             app:layout_constraintTop_toBottomOf="@id/buttonRegisterRegister"
             android:src="@drawable/facebook_login"/>
@@ -126,18 +133,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Facebook"
+            android:text="@string/facebook"
             app:layout_constraintStart_toStartOf="@id/facebookRegister"
             app:layout_constraintTop_toTopOf="@id/facebookRegister"
             app:layout_constraintBottom_toBottomOf="@id/facebookRegister"
             app:layout_constraintEnd_toEndOf="@id/facebookRegister"/>
-
 
         <ImageView
             android:id="@+id/googleRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
+            android:contentDescription="@string/google"
             app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
             app:layout_constraintTop_toBottomOf="@id/buttonRegisterRegister"
             android:src="@drawable/google_login"/>
@@ -145,7 +152,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Google"
+            android:text="@string/google"
             app:layout_constraintStart_toStartOf="@id/googleRegister"
             app:layout_constraintTop_toTopOf="@id/googleRegister"
             app:layout_constraintBottom_toBottomOf="@id/googleRegister"
