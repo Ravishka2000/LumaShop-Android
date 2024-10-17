@@ -9,6 +9,7 @@ import com.android.lumashop.models.VendorRatings
 class VendorRatingsAdapter(private var ratingsList: List<VendorRatings>) :
     RecyclerView.Adapter<VendorRatingsAdapter.VendorRatingViewHolder>() {
 
+    // ViewHolder class for binding rating data to the item view
     inner class VendorRatingViewHolder(private val binding: ItemVendorRatingBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -19,6 +20,7 @@ class VendorRatingsAdapter(private var ratingsList: List<VendorRatings>) :
         }
     }
 
+    // Inflate item layout and create ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VendorRatingViewHolder {
         val binding = ItemVendorRatingBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -28,15 +30,18 @@ class VendorRatingsAdapter(private var ratingsList: List<VendorRatings>) :
         return VendorRatingViewHolder(binding)
     }
 
+    // Update the list of ratings and refresh the RecyclerView
     fun updateRatings(newRatings: List<VendorRatings>) {
         ratingsList = newRatings
         notifyDataSetChanged()
     }
 
+    // Bind rating data to the ViewHolder
     override fun onBindViewHolder(holder: VendorRatingViewHolder, position: Int) {
         holder.bind(ratingsList[position])
     }
 
+    // Return the total number of ratings
     override fun getItemCount(): Int {
         return ratingsList.size
     }

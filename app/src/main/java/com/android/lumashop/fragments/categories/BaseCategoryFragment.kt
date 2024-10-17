@@ -19,6 +19,7 @@ abstract class BaseCategoryFragment : Fragment() {
 
     abstract fun getCategoryProducts(): List<Product>
 
+    // Inflate the layout and set up binding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +28,7 @@ abstract class BaseCategoryFragment : Fragment() {
         return binding.root
     }
 
+    // Set up the RecyclerView with products when the view is created
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,6 +51,7 @@ abstract class BaseCategoryFragment : Fragment() {
         }
     }
 
+    // Clean up the binding reference when the view is destroyed
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
