@@ -31,7 +31,7 @@ class OrderProductsAdapter(
             product.quantity.toString().also { binding.tvBillingProductQuantity.text = it } // Assuming Product has a quantity property
             product.product.productImages?.let { images ->
                 if (images.isNotEmpty()) {
-                    binding.imageCartProduct.setImageResource(images[0]) // Ensure images array has valid resources
+                    binding.imageCartProduct.setImageResource(R.color.g_blue) // Ensure images array has valid resources
                 } else {
                     binding.imageCartProduct.setImageResource(R.color.g_blue) // Default color
                 }

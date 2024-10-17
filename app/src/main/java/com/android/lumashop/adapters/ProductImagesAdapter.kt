@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.lumashop.databinding.ItemProductImageBinding
 
-class ProductImagesAdapter(private val images: List<Int>) : RecyclerView.Adapter<ProductImagesAdapter.ProductImageViewHolder>() {
+class ProductImagesAdapter(private val images: List<String>) : RecyclerView.Adapter<ProductImagesAdapter.ProductImageViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductImageViewHolder {
         val binding = ItemProductImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -14,7 +14,7 @@ class ProductImagesAdapter(private val images: List<Int>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: ProductImageViewHolder, position: Int) {
         val imageResId = images[position]
-        holder.binding.imageView.setImageResource(imageResId)
+//        holder.binding.imageView.setImageResource(imageResId)
     }
 
     override fun getItemCount() = images.size

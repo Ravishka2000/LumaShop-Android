@@ -14,7 +14,7 @@ data class Product(
     val colorOptions: List<String>? = emptyList(),
     val weight: Double? = null,
     val assemblyRequired: Boolean? = false,
-    val productImages: List<Int>? = emptyList(),
+    val productImages: List<String>? = emptyList(),
     val warrantyPeriod: Int? = null,
     val isFeatured: Boolean? = false,
     val listingId: String,

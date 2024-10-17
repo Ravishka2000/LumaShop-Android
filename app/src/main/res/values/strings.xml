@@ -30,4 +30,5 @@
     <string name="add_to_cart">Add to Cart</string>
     <string name="dimensions">Dimensions</string>
     <string name="color">Color</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>

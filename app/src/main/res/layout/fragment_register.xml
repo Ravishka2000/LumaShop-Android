@@ -109,6 +109,19 @@
             android:inputType="textPassword"
             android:layout_marginTop="10dp"/>
 
+        <EditText
+            android:id="@+id/edConfirmPasswordRegister"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edittextHeight"
+            android:autofillHints="Password"
+            app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
+            app:layout_constraintTop_toBottomOf="@id/edPasswordRegister"
+            style="@style/editText"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonRegisterRegister"
             style="@style/GreenButtonStyle"
@@ -119,7 +132,7 @@
             app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
-            app:layout_constraintTop_toBottomOf="@id/edPasswordRegister"/>
+            app:layout_constraintTop_toBottomOf="@id/edConfirmPasswordRegister"/>
         <ImageView
             android:id="@+id/facebookRegister"
             android:layout_width="wrap_content"
